@@ -1,10 +1,8 @@
 //login as customer and enter the details and login as  staff and approve the account  based on application number 
- var openAcc
- {
-   var accnumber=0
-describe("open account for user ",async ()=>{
+ 
+ describe("open account for user ",async ()=>{
 //launch the browser
-       
+       var accnumber;
    it("launch the browser  ",async ()=>{
 
   await browser.maximizeWindow();
@@ -99,19 +97,17 @@ describe("open account for user ",async ()=>{
          let accnoText =await browser.getAlertText();
          let  accountno= accnoText.split('')
           
-        accno=accountno.filter((accountno)=>{return accountno>=0  &&  accountno<=9 });
-           accnumber=accno.join('').trim();
-        console.log("The  Account  no from   alert text Pop-Up  " +accnumber);       
-
+       var  accno=accountno.filter((accountno)=>{return accountno>=0  &&  accountno<=9 });
+         accnumber=accno.join('').trim();
+        console.log("The  Account  no from   alert text Pop-Up  " +accnumber);
+       //1011221011676
       });
      
 
-     
 
+     
+          
     
 
    })
- }
-
-      var data=new openAcc();
-    module.exports=data;
+ 

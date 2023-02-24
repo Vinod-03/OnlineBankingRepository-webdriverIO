@@ -16,9 +16,7 @@ describe("welcome page face book",()=>{
    
 
     //   await browser.pause(3000)
-    // await $(`//a[contains(text(),'Internet Banking')]`).moveTo({})
-
-    // await $(`//li[.="Login "]`).click();
+    // 
     
      await browser.pause(3000)
 
