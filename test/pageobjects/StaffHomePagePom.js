@@ -1,7 +1,7 @@
 class staffHomePage
 {
 
-    get approveBtn()
+    get approve_Btn()
     {
      return  $(`[name="apprvac"]`);
     }

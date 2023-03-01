@@ -11,15 +11,12 @@ it("login",async ()=>{
 })
 
 
-
-
    it("User credential-login" , async ()=>{
 
    await (await browser.$(`[name="customer_id"]`)).setValue("1011676");
    await (await browser.$(`[name="password"]`)).setValue("password");
    await (await browser.$(`[name="login-btn"]`)).click();
 
-   await browser.pause(5000)
 
 
    })

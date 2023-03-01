@@ -1,3 +1,5 @@
+//import { expect } from "chai";
+var expect = require('chai').expect
 exports.config = {
     //
     // ====================
@@ -227,8 +229,9 @@ exports.config = {
      * Hook that gets executed _before_ a hook within the suite starts (e.g. runs before calling
      * beforeEach in Mocha)
      */
-    // beforeHook: function (test, context) {
-    // },
+     beforeHook: function (test, context) {
+         global.expect=expect;
+     },
     /**
      * Hook that gets executed _after_ a hook within the suite starts (e.g. runs after calling
      * afterEach in Mocha)

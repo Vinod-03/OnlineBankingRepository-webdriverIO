@@ -12,13 +12,18 @@ describe("Approve Pending Account " , async ()=>{
   browser.url("http://testingserver/domain/Online_Banking_System/cust_regfrm_confirm.php");
 
  (await home.StaffLoginBtn).click();
- 
+  const  staffloginpageTitle=await browser.getTitle();
+  expect(staffloginpageTitle).toHaveTitleContaining("Staff Page");
  await   staff.staffLoginWithCredential("210001","password")
+      const StaffHomepage=await browser.getTitle();
+      expect(StaffHomepage).toHaveTextContaining("StaffHomepage")
  });
 
  it("Approve account  ",async ()=>{
  
   await   (await sHomePage.approveBtn).click();
+    const  aproveAcctitle=await browser.getTitle();  
+    expect(aproveAcctitle).toHaveTitleContaining("Pending Customers")
   await penAcc.AccountNo("748058907");
   let accnoText =await browser.getAlertText();
   let  accountno= accnoText.split('')
@@ -26,9 +31,6 @@ describe("Approve Pending Account " , async ()=>{
   console.log("The  Account  no from   alert text Pop-Up  " +accnumber);
   
  })
-
-
-
 
 
 

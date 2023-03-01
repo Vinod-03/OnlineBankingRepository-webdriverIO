@@ -1,19 +1,19 @@
 class PendingaAccount
 {
 
-   get ApplicationNoTxt()
+   get ApplicationNo_Txt()
    {
     return $(`[name="application_no"]`);
    }
 
 
-    get searchApplicationNoBtn()
+    get searchApplicationNo_Btn()
     {
        return $(`//input[@name="search_application"]`);
     }
    
    
-    get approveBtn()
+    get approve_Btn()
     {
       return  $(`[name="approve_cust"]`);
 
@@ -23,9 +23,9 @@ class PendingaAccount
     async  AccountNo(apno)
     {
 
-       await this.ApplicationNoTxt.setValue(apno);
-       await   this.searchApplicationNoBtn.click();
-       await this.approveBtn.click();
+       await this.ApplicationNo_Txt.setValue(apno);
+       await   this.searchApplicationNo_Btn.click();
+       await this.approve_Btn.click();
 
       
     }

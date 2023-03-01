@@ -3,94 +3,94 @@
 class Register
 {
 
-       get userNameTxt()
+       get userName_Txt()
        {
           return $(`[name="name"]`);
        }
-       get userMobileNumberTxt()
+       get userMobileNumber_Txt()
        {
           return $(`[name="mobile"]`);
        }
        
-       get userEmailTxt()
+       get userEmail_Txt()
        {
           return $(`[name="email"]`);
        }
 
        
-       get userLandlineNoTxt()
+       get userLandlineNo_Txt()
        {
           return $(`[name="landline"]`);
        }
 
-       get userDob()
+       get userDob_Txt()
        {
           return $(`[name="dob"]`);
        }
        
-       get userPanNumberTxt()
+       get userPanNumber_Txt()
        {
           return $(`[name="pan_no"]`);
        }
 
-       get userCitizshppTxt()
+       get userCitizshpp_Txt()
        {
           return $(`[name="citizenship"]`);
        }
 
-       get userHomeAddresTxt()
+       get userHomeAddres_Txt()
        {
           return $(`[name="homeaddrs"]`);
        }
 
-       get userOfficeaddrsTxt()
+       get userOfficeaddrs_Txt()
        {
           return $(`[name="officeaddrs"]`);
        }
        
-       get   userAddresPinCode()
+       get   userAddresPinCode_Txt()
        {
           return $(`[name="pin"]`);
        }
    
 
-       get   userAreaTxt()
+       get   userArea_Txt()
        {
           return $(`[name="arealoc"]`);
        }
     
     
    
-      get userGenderSelect()
+      get userGender_Select()
       {
         return $(`[name="gender"]`);
       }
 
 
-      get userStateSelect()
+      get userState_Select()
       {
         return $(`[name="state"]`);
       }
 
 
-      get userCitySelect()
+      get userCity_Select()
       {
         return $(`[name="city"]`);
       }
 
-      get NomineeAccTypeSelect()
+      get NomineeAccType_Select()
       {
         return $(`[name="acctype"]`);
       }
      
 
-      get submitBtn()
+      get submit_Btn()
       {
         return $(`[name="submit"]`);
       }
       
 
-      get ReconfirmBtn()
+      get Reconfirm_Btn()
       {
         return $(`[name="cnfrm-submit"]`);
       }
@@ -99,29 +99,29 @@ class Register
 
      async  CreateAccount(name,mobile,email,landlineno,dob,pan_no,citizenship,homeaddrs,officeaddrs,pin,arealoc,gender,state,city,acctype)
      {  
-     await this.userNameTxt.setValue(name);
-    await this.userMobileNumberTxt.setValue(mobile);
-    await this.userEmailTxt.setValue(email);
-    await this.userLandlineNoTxt.setValue(landlineno);
-    await this.userDob.click();
-    await this.userDob.setValue(dob);
-    await this.userPanNumberTxt.setValue(pan_no);
-    await this.userCitizshppTxt.setValue(citizenship);
-    await this.userHomeAddresTxt.setValue(homeaddrs);
-    await this.userOfficeaddrsTxt.setValue(officeaddrs);
-    await this.userAddresPinCode.setValue(pin);
-    await this.userAreaTxt.setValue(arealoc);
-    await  this.userGenderSelect.selectByVisibleText(gender);
-    await (await this.userStateSelect).selectByVisibleText(state);
-    await (await this.userCitySelect).selectByVisibleText(city);
-    await (await this.NomineeAccTypeSelect).selectByVisibleText(acctype);
-    await this.submitBtn.click();
+     await this.userName_Txt.setValue(name);
+    await this.userMobileNumber_Txt.setValue(mobile);
+    await this.userEmail_Txt.setValue(email);
+    await this.userLandlineNo_Txt.setValue(landlineno);
+    await this.userDob_Txt.click();
+    await this.userDob_Txt.setValue(dob);
+    await this.userPanNumber_Txt.setValue(pan_no);
+    await this.userCitizshpp_Txt.setValue(citizenship);
+    await this.userHomeAddres_Txt.setValue(homeaddrs);
+    await this.userOfficeaddrs_Txt.setValue(officeaddrs);
+    await this.userAddresPinCode_Txt.setValue(pin);
+    await this.userAreaTxt_Txt.setValue(arealoc);
+    await  this.userGender_Select.selectByVisibleText(gender);
+    await (await this.userState_Select).selectByVisibleText(state);
+    await (await this.userCity_Select).selectByVisibleText(city);
+    await (await this.NomineeAccType_Select).selectByVisibleText(acctype);
+    await this.submit_Btn.click();
      }
 
    async Reconfimation()
    {
 
-    await this.ReconfirmBtn.click();
+    await this.Reconfirm_Btn.click();
 
    }
    

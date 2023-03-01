@@ -1,17 +1,17 @@
 class StaffLogin
 {
 
-   get userNameTxt()
+   get userName_Txt()
    {
     return $(`[name="staff_id"]`)
    }
 
-    get passwordTxt()
+    get password_Txt()
     {
        return $(`[name="password"]`)
     }
 
-    get loginBtn()
+    get login_Btn()
     {
         return $(`[name="staff_login-btn"]`)
     }
@@ -22,9 +22,9 @@ class StaffLogin
    async staffLoginWithCredential(staffid,password)
     {
 
-      await this.userNameTxt.setValue(staffid);
-      await this.passwordTxt.setValue(password);
-      await this.loginBtn.click();
+      await this.userName_Txt.setValue(staffid);
+      await this.password_Txt.setValue(password);
+      await this.login_Btn.click();
 
     }
 
