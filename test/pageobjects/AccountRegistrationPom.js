@@ -99,7 +99,7 @@ class Register
 
      async  CreateAccount(name,mobile,email,landlineno,dob,pan_no,citizenship,homeaddrs,officeaddrs,pin,arealoc,gender,state,city,acctype)
      {  
-     await this.userName_Txt.setValue(name);
+    await this.userName_Txt.setValue(name);
     await this.userMobileNumber_Txt.setValue(mobile);
     await this.userEmail_Txt.setValue(email);
     await this.userLandlineNo_Txt.setValue(landlineno);
@@ -110,7 +110,7 @@ class Register
     await this.userHomeAddres_Txt.setValue(homeaddrs);
     await this.userOfficeaddrs_Txt.setValue(officeaddrs);
     await this.userAddresPinCode_Txt.setValue(pin);
-    await this.userAreaTxt_Txt.setValue(arealoc);
+    await this.userArea_Txt.setValue(arealoc);
     await  this.userGender_Select.selectByVisibleText(gender);
     await (await this.userState_Select).selectByVisibleText(state);
     await (await this.userCity_Select).selectByVisibleText(city);

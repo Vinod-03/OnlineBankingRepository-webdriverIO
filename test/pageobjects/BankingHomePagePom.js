@@ -27,8 +27,12 @@ class homePage
       return $(`//a[contains(text(),'Internet Banking')]`);
    }
 
+   get fundTransfer_Btn()
+   {
+      return $(`//li[contains(text(),'Fund Transfer')]`);
+   }
    
-   get internetBankingRegisterBtn()
+   get internetBankingRegister_Btn()
    {
       return $("//li[contains(text(),'Register')]");
    }
@@ -53,7 +57,7 @@ class homePage
 
         }
 
-        async openBeowser()
+        async openBrowser()
         {
          await   browser.url("http://testingserver/domain/Online_Banking_System/");
           await   browser.maximizeWindow();

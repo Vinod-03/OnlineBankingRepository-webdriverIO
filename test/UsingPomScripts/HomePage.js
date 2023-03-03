@@ -3,21 +3,22 @@ const home = require("../pageobjects/BankingHomePagePom.js");
 const userDetails = require("../pageobjects/AccountRegistrationPom.js");
 const { expect } = require("chai");
 
+
 describe("Internet Banking Home Page  ",async ()=>{
    let appno=""
 
     it(" open the browser Click on  OpenAccount Button " ,async()=>{
 
-  await home.openBeowser();
+  await home.openBrowser();
   const  homePageUrl= await browser.getUrl();
   console.log("Home Page Url is " +homePageUrl);
-  expect(homePageUrl).to.equal("http://testingserver/domain/Online_Banking_System/");
+  expect(homePageUrl).to.contains("http://testingserver/domain/Online_Banking_System/");
   await (await home.openAccount_Btn).click();
-   const registPageTitle= browser.getTitle();
-   expect(registPageTitle).toHaveTitleContaining("Registration Form");
-
   
-  
+  const registPageUrl=  await browser.getUrl();
+  console.log("the Url is "+registPageUrl);
+   
+  expect(registPageUrl).to.contains("http://testingserver/domain/Online_Banking_System/customer_reg_form.php"); 
   });
   
   it("enter the User details" , async ()=>{
@@ -27,7 +28,9 @@ describe("Internet Banking Home Page  ",async ()=>{
    
     it("Reconfirmation page " ,async ()=>{
      const reconfirmPageUrl= await browser.getUrl();
-      expect(reconfirmPageUrl).toHaveUrlContaining("http://testingserver/domain/Online_Banking_System/cust_regfrm_confirm.php");
+     console.log("The Url " +reconfirmPageUrl);
+     
+     expect(reconfirmPageUrl).to.contains("http://testingserver/domain/Online_Banking_System/cust_regfrm_confirm.php");
      await  userDetails.Reconfimation();   
     })
 
@@ -35,7 +38,6 @@ describe("Internet Banking Home Page  ",async ()=>{
     it("get the Application no ",async ()=>{
        
         let apno =await browser.getAlertText();
-    
         let  textAlertappno= apno.split('')
         applicationno =textAlertappno.filter((textAlertappno)=>{return textAlertappno>=0 &&  textAlertappno<=9});
         appno=applicationno.join('').trim(); //766954258

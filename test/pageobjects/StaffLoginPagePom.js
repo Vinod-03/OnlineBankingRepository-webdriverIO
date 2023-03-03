@@ -19,10 +19,10 @@ class StaffLogin
 
 
 
-   async staffLoginWithCredential(staffid,password)
+   async staffLoginWithCredential(staff_id,password)
     {
 
-      await this.userName_Txt.setValue(staffid);
+      await this.userName_Txt.setValue(staff_id);
       await this.password_Txt.setValue(password);
       await this.login_Btn.click();
 

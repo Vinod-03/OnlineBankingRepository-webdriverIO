@@ -20,7 +20,7 @@ class PendingaAccount
     }
     
 
-    async  AccountNo(apno)
+    async  applicationNo(apno)
     {
 
        await this.ApplicationNo_Txt.setValue(apno);
