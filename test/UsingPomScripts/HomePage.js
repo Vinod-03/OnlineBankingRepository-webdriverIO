@@ -7,7 +7,7 @@ const { expect } = require("chai");
 describe("Internet Banking Home Page  ",async ()=>{
    let appno=""
 
-    it(" open the browser Click on  OpenAccount Button " ,async()=>{
+    it("Navigating to the application-OpenAccount" ,async()=>{
 
   await home.openBrowser();
   const  homePageUrl= await browser.getUrl();

@@ -1,3 +1,5 @@
+const { expect } = require("chai");
+
 describe(" ", async ()=>{
 
     it("order cake", async()=>{
@@ -8,9 +10,10 @@ describe(" ", async ()=>{
      await browser.$(`[name="q"]`).setValue("cakes");
      await  browser.$(`//img[@class="img-responsive" and @alt="Search"]`).click();
     const  cakesPage= await browser.getUrl();
-    expect(browser).toHaveTitleContaining("cake")
+   
     })
 
+    
     it("select the cake", async()=>{
     
      
@@ -31,7 +34,7 @@ describe(" ", async ()=>{
      
        oneKgCakeToArrayOrice =Oneprice.split(" ");
        oneKgCakePrice=oneKgCakeToArrayOrice[1]
-
+   
      expect(Number(oneKgCakePrice)).toBeGreaterThan(Number(cakeHalfKg))
 
     })

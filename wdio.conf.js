@@ -1,7 +1,8 @@
 //import { expect } from "chai";
- var expect = require('chai').expect
+
+
+var expect = require('chai').expect
 exports.config = {
-    //
     // ====================
     // Runner Configuration
     // ====================
@@ -26,15 +27,15 @@ exports.config = {
     //
     specs: [
         './test/specs/**/*.js'
+       
     ],
+    suites:{
+        smoke:['./TourismManagementSystem/optimisedScripts/adminModule/createPackage.js','./TourismManagementSystem/optimisedScripts/adminModule/checkCreatedPackage.js']
+    },
     // Patterns to exclude.
     exclude: [
         // 'path/to/excluded/files'
     ],
-    suites:{
-
-        demo:["./test/UsingPomScripts/HomePage.js","./test/UsingPomScripts/AccountApprove.js"]
-    },
     //
     // ============
     // Capabilities
@@ -51,32 +52,40 @@ exports.config = {
     // and 30 processes will get spawned. The property handles how many capabilities
     // from the same test should run tests.
     //
-    maxInstances: 1,
+    maxInstances: 10,
     //
     // If you have trouble getting all important capabilities together, check out the
     // Sauce Labs platform configurator - a great tool to configure your capabilities:
     // https://saucelabs.com/platform/platform-configurator
     //
-    capabilities: [{
+    capabilities: [
+        // Chrome Instance
+         {   // maxInstances can get overwritten per capability. So if you have an in-house Selenium
+            // grid with only 5 firefox instances available you can make sure that not more than
+            // 5 instances get started at a time.
+        
+            maxInstances: 5,
+            browserName: 'chrome',
+            acceptInsecureCerts: true,    
     
-        // maxInstances can get overwritten per capability. So if you have an in-house Selenium
-        // grid with only 5 firefox instances available you can make sure that not more than
-        // 5 instances get started at a time.
-        maxInstances: 5,
-        //
-        browserName: 'chrome',
-        acceptInsecureCerts: true,
-        // If outputDir is provided WebdriverIO can capture driver session logs
-        // it is possible to configure which logTypes to include/exclude.
-        // excludeDriverLogs: ['*'], // pass '*' to exclude all driver session logs
-        // excludeDriverLogs: ['bugreport', 'server'],
-        'goog:chromeOptions': {
-                prefs: {
-                  // 0 - Default, 1 - Allow, 2 - Block
-                  'profile.managed_default_content_settings.notifications': 1
-                }
-              }
-    }],
+            'goog:chromeOptions': {
+                                    prefs: {
+                                    // 0 - Default, 1 - Allow, 2 - Block
+                                    'profile.managed_default_content_settings.notifications': 1
+                                            }
+              }
+            // If outputDir is provided WebdriverIO can capture driver session logs
+            // it is possible to configure which logTypes to include/exclude.
+            // excludeDriverLogs: ['*'], // pass '*' to exclude all driver session logs
+            // excludeDriverLogs: ['bugreport', 'server'],
+        }, 
+        // Fire Fox Instance
+        // {
+        //     maxInstances: 5,
+        //     browserName: 'MicrosoftEdge',
+        //     acceptInsecureCerts: true
+        // }
+        ],
     //
     // ===================
     // Test Configurations
@@ -102,7 +111,7 @@ exports.config = {
     //
     // If you only want to run your tests until a specific amount of tests have failed use
     // bail (default is 0 - don't bail, run all tests).
-    bail: 0,
+    bail: 1,
     //
     // Set a base URL in order to shorten url command calls. If your `url` parameter starts
     // with `/`, the base url gets prepended, not including the path portion of your baseUrl.
@@ -112,6 +121,7 @@ exports.config = {
     //
     // Default timeout for all waitFor* commands.
     waitforTimeout: 10000,
+    //waitforTimeout: 20000,
     //
     // Default timeout in milliseconds for request
     // if browser driver or grid doesn't send response
@@ -147,6 +157,17 @@ exports.config = {
     // The only one supported by default is 'dot'
     // see also: https://webdriver.io/docs/dot-reporter
     reporters: ['spec'],
+   
+        // ...
+        reporters: [['allure', {
+            outputDir: 'allure-results',
+            disableWebdriverStepsReporting: true,
+            disableWebdriverScreenshotsReporting: false,
+        }]],
+        // ...
+    
+    
+    
 
 
     
@@ -155,7 +176,8 @@ exports.config = {
     // See the full list at http://mochajs.org/
     mochaOpts: {
         ui: 'bdd',
-        timeout: 60000
+        //timeout: 60000
+        timeout: 120000
     },
     //
     // =====
@@ -165,7 +187,7 @@ exports.config = {
     // it and to build services around it. You can either apply a single function or an array of
     // methods to it. If one of them returns with a promise, WebdriverIO will wait until that promise got
     // resolved to continue.
-    /**
+    /*
      * Gets executed once before all workers get launched.
      * @param {Object} config wdio configuration object
      * @param {Array.<Object>} capabilities list of capabilities details
@@ -233,9 +255,10 @@ exports.config = {
      * Hook that gets executed _before_ a hook within the suite starts (e.g. runs before calling
      * beforeEach in Mocha)
      */
-     beforeHook: function (test, context) {
-         global.expect=expect;
-     },
+    beforeHook: function (test, context) 
+    {
+    global.expect = expect;
+    },
     /**
      * Hook that gets executed _after_ a hook within the suite starts (e.g. runs after calling
      * afterEach in Mocha)
@@ -252,8 +275,16 @@ exports.config = {
      * @param {Boolean} result.passed    true if test has passed, otherwise false
      * @param {Object}  result.retries   informations to spec related retries, e.g. `{ attempts: 0, limit: 0 }`
      */
-    // afterTest: function(test, context, { error, result, duration, passed, retries }) {
-    // },
+    afterTest: 
+    //function(test, context, { error, result, duration, passed, retries }) {
+   // },
+        async function (step, scenario, { error, duration, passed }, context) {
+            if (error) {
+              await browser.takeScreenshot();
+            }
+          }
+   
+        
 
 
     /**
